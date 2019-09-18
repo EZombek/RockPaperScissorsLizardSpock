@@ -1,0 +1,86 @@
+#THIS PROGRAM SIMULATES THE GAME ROCK PAPER SCISSORS LIZARD SPOCK
+#Ethan Jarzombek
+#Comp430
+
+import random
+
+# 0 - rock
+# 1 - paper
+# 2 - scissors
+# 3 - lizard
+# 4 - spock
+
+print ("\n\n ROCK PAPER SCISSORS LIZARD SPOCK! \n")
+
+# Converts players choice into a number for later use.
+def name_to_number(name):
+
+	if(name == 'rock'):
+		return 0;
+	elif(name == 'paper'):
+		return 1;
+	elif(name == 'scissors'):
+		return 2;
+	elif(name == 'lizard'):
+		return 3;
+	elif(name == 'spock'):
+		return 4;
+	else:
+		print ("ERROR Name")
+
+# Converts choices from their names to a number for later use.
+def number_to_name(number):
+
+	if(number == 0):
+		return 'rock';
+	elif(number == 1):
+		return 'paper';
+	elif(number == 2):
+		return 'scissors';
+	elif(number == 3):
+		return 'lizard';
+	elif(number == 4):
+		return 'spock';
+	else:
+		print ("ERROR Number")
+
+# Players choice function definition
+def rpsls(player_choice):
+
+	print ("\n")
+
+	# prints the players choice
+	print ("Player chooses " + player_choice)
+
+	# sets players choice to a number to calculate winner later.
+	player_number = name_to_number( player_choice )
+
+	# generates a random play from the computer
+	comp_number = random.randrange( 0, 4 )
+
+	# sets computers choice to a name for display.
+	comp_choice = number_to_name( comp_number );
+
+	# prints the computers choice
+	print ("Computer chooses " + comp_choice)
+
+	# calculates the winner
+	difference = (comp_number - player_number ) % 5
+
+	# displays the winner
+	if( difference == 1 or difference == 2):
+		print ("Computer Wins!")
+	elif( difference == 4 or difference == 3 ):
+		print ("Player Wins!")
+	elif( difference == 0 ):
+		print ("It's a tie!")
+
+# player inputs (runs players choice function)
+#rpsls("rock")
+#rpsls("paper")
+#rpsls("scissors")
+#rpsls("lizard")
+#rpsls("spock")
+
+# OR, if you want to enter your own choices, uncomment this, and comment out the inputs above.
+rpsls(input("Enter: rock, paper, scissors, lizard, or spock: "))
